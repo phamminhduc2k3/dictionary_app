@@ -1,0 +1,12 @@
+.mainView_container {
+    -fx-background-color: #EEEEEE;
+}
+
+/* the side bar */
+.mainView_sidebar {
+    -fx-background-color: #3c4f93;
+}
+
+.mainView_sidebar Button {
+    -fx-background-color: #3c4f93;
+}

@@ -1,0 +1,43 @@
+.search_container {
+    -fx-background-color: #EEEEEE;
+}
+
+.search_meaning_label {
+    -fx-background-color: #3c4f93;
+}
+
+.html-editor .top-toolbar
+{
+     -fx-max-width: 0px;
+	-fx-min-width: 0px;
+	-fx-pref-width: 0px;
+	-fx-max-height: 0px;
+	-fx-min-height: 0px;
+	-fx-pref-height: 0px;
+        -fx-opacity: 0;
+}
+
+
+.html-editor .bottom-toolbar
+{
+     -fx-max-width: 0px;
+	-fx-min-width: 0px;
+	-fx-pref-width: 0px;
+	-fx-max-height: 0px;
+	-fx-min-height: 0px;
+	-fx-pref-height: 0px;
+        -fx-opacity: 0;
+}
+
+.list-cell{
+     -fx-font-size:13.0;
+     -fx-font-family: 'Segoe UI Semibold';
+}
+
+.button {
+    -fx-background-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: #eeeeee;
+}
