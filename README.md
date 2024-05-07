@@ -36,9 +36,6 @@ UML diagram xem tại [đây](https://imgur.com/a/TwzQ8Nx).
 
 ## Demo
 * Video hướng dẫn sử dụng tại [đây](https://drive.google.com/drive/folders/1ouTxp8Tl3woolLfl15YZWhQTy5Z_JocW?usp=sharing).
-<p align="center">
-<img width="600" height="480" src="https://i.imgur.com/EZrJaaI.png">
-</p>
 
 
 ## Future improvements
