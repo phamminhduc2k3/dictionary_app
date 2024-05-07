@@ -41,7 +41,7 @@ public class HistoryController extends MainController implements Initializable {
 
     @FXML
     public void searchTextFieldAction(KeyEvent keyEvent) {
-        super.setSearchTextFieldAction(keyEvent, bookmarkDictionary);
+        super.setSearchTextFieldAction(keyEvent, historyDictionary);
     }
 
     @FXML

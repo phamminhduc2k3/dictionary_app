@@ -27,15 +27,27 @@ import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public abstract class MainController implements Initializable {
+public class MainController implements Initializable {
     private static final String DATA_PATH = new File("").getAbsolutePath() + "\\src\\main\\resources\\Data\\E_V.txt";
     private static final String Bookmark_PATH = new File("").getAbsolutePath() + "\\src\\main\\resources\\Data\\bookmark.txt";
     private static final String History_PATH = new File("").getAbsolutePath() + "\\src\\main\\resources\\Data\\history.txt";
     protected final ObservableList<String> searchList = FXCollections.observableArrayList();
     protected final ObservableList<String> bookmarkList = FXCollections.observableArrayList();
-    protected final Dictionary bookmarkDictionary = DictionaryContainer.getBookmarkDictionary();
-    protected final Dictionary historyDictionary = DictionaryContainer.getHistoryDictionary();
-    protected final Dictionary dictionary = DictionaryContainer.getDictionary();
+//    protected final Dictionary bookmarkDictionary = DictionaryContainer.getBookmarkDictionary();
+//    protected final Dictionary historyDictionary = DictionaryContainer.getHistoryDictionary();
+//    protected final Dictionary dictionary = DictionaryContainer.getDictionary();
+    protected static final Dictionary dictionary = new Dictionary();
+    protected static final Dictionary historyDictionary = new Dictionary();
+    protected static final Dictionary bookmarkDictionary = new Dictionary();
+    public static Dictionary getBookmarkDictionary() {
+        return bookmarkDictionary;
+    }
+    public static Dictionary getHistoryDictionary() {
+        return historyDictionary;
+    }
+    public static   Dictionary getDictionary() {
+        return dictionary;
+    }
     protected final DictionaryManagement dictionaryManagement = new DictionaryManagement();
     protected boolean isEdit = false;
     @Override
@@ -86,6 +98,11 @@ public abstract class MainController implements Initializable {
     public void loadHistoryData() throws IOException {
         DictionaryManagement.loadDataFromFile(historyDictionary, History_PATH);
     }
+    public void loaddata() throws  IOException{
+        loadDictionaryData();
+        loadBookmarkData();
+        loadHistoryData();
+    }
 
     public void updateHistoryDictionary() throws IOException {
        DictionaryManagement.updateWord(historyDictionary, History_PATH);
@@ -111,7 +128,7 @@ public abstract class MainController implements Initializable {
 
 
     @FXML
-    public abstract void handleClickListView() throws IOException;
+    public void handleClickListView() throws IOException{};
 
     @FXML
     public void handleClickUKSoundBtn() throws UnsupportedEncodingException {

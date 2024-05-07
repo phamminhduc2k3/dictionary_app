@@ -35,9 +35,9 @@ public class MainViewController implements Initializable {
     }
     private void loadFiles() {
         try {
-            DictionaryManagement.loadDataFromFile(DictionaryContainer.getDictionary(),DATA_PATH);
-            DictionaryManagement.loadDataFromFile(DictionaryContainer.getBookmarkDictionary(),Bookmark_PATH);
-            DictionaryManagement.loadDataFromFile(DictionaryContainer.getHistoryDictionary(),History_PATH);
+            DictionaryManagement.loadDataFromFile(MainController.getDictionary(),DATA_PATH);
+            DictionaryManagement.loadDataFromFile(MainController.getBookmarkDictionary(),Bookmark_PATH);
+            DictionaryManagement.loadDataFromFile(MainController.getHistoryDictionary(),History_PATH);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,9 +68,9 @@ public class MainViewController implements Initializable {
 
         exitBtn.setOnAction((ActionEvent event ) -> {
             try {
-                DictionaryManagement.updateWord(DictionaryContainer.getDictionary(), DATA_PATH);
-                DictionaryManagement.updateWord(DictionaryContainer.getHistoryDictionary(), History_PATH);
-                DictionaryManagement.updateWord(DictionaryContainer.getBookmarkDictionary(), Bookmark_PATH);
+                DictionaryManagement.updateWord(MainController.getDictionary(), DATA_PATH);
+                DictionaryManagement.updateWord(MainController.getHistoryDictionary(), History_PATH);
+                DictionaryManagement.updateWord(MainController.getBookmarkDictionary(), Bookmark_PATH);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

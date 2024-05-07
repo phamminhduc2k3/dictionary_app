@@ -21,7 +21,7 @@ import com.example.demo.Cli.Word;
 
 
 public class AddWordController implements Initializable {
-    private final Dictionary dictionary = DictionaryContainer.getDictionary();
+    private final Dictionary dictionary = MainController.getDictionary();
     private static final String DATA_PATH = new File("").getAbsolutePath() + "\\src\\main\\resources\\Data\\E_V.txt";
     private final DictionaryManagement dictionaryManagement = new DictionaryManagement();
 

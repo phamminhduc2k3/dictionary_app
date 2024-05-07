@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Controllers.MainControllerImpl;
+import com.example.demo.Controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
-    public MainControllerImpl mainController = new MainControllerImpl();
+    public MainController mainController = new MainController();
     @Override
     public void start(Stage stage) throws IOException {
         mainController.loaddata();
