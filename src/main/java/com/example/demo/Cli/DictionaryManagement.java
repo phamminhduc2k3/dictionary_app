@@ -175,10 +175,22 @@ public ObservableList<String> searcher(Dictionary dictionary, String searchWord)
         // Tìm thấy chỉ số bắt đầu của các từ có tiền tố tương đồng
         for (int i = startIndex; i < sortedWords.size(); i++) {
             int length = searchWord.length();
-            String wordzin = sortedWords.get(i);
-            String word = sortedWords.get(i).substring(0, length);
+               String word = sortedWords.get(i);
+            int LengthWord = word.length();
+            int LengthsearchWord = searchWord.length();
+            if (word.startsWith(searchWord)) {
+                list.add(word);
+            } else if (LengthWord < LengthsearchWord) {
+                continue;
+            } else {
+                break; // Dừng khi không còn từ nào có tiền tố tương đồng
+            }
+        }
+        for (int i = startIndex -1 ; i >= 0; i--) {
+            int length = searchWord.length();
+            String word = sortedWords.get(i);
             if (word.startsWith(searchWord) || word.startsWith(" " + searchWord)) {
-                list.add(wordzin);
+                list.add(word);
             } else {
                 break; // Dừng khi không còn từ nào có tiền tố tương đồng
             }
@@ -186,30 +198,37 @@ public ObservableList<String> searcher(Dictionary dictionary, String searchWord)
     } else {
         return list;
     }
-
+    Collections.sort(list);
     return list;
 }
 
 
     private int binarySearchRecursive(List<String> words, String searchWord, int left, int right) {
+        int mid = 0;
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            mid = left + (right - left) / 2;
             String midWord = words.get(mid);
-
-            // Cắt các từ để đảm bảo cùng độ dài
-            int Length = searchWord.length();
-            midWord = midWord.substring(0, Length );
-
-            int res = searchWord.compareTo(midWord);
+            int LengthmidWord = midWord.length();
+            int LengthsearchWord = searchWord.length();
+            int res = 0;
+            if(LengthmidWord >= LengthsearchWord) {
+                midWord = midWord.substring(0, LengthsearchWord);
+                res = searchWord.compareTo(midWord);
+            }else {
+                searchWord = searchWord.substring(0, LengthmidWord);
+                res = searchWord.compareTo(midWord);
+            }
+//            midWord = midWord.substring(0, LengthsearchWord);
+//            res = searchWord.compareTo(midWord);
             if (res == 0) {
                 return mid; // Tìm thấy từ khóa
             } else if (res < 0) {
-                right = mid - 1; // Tìm kiếm bên trái
+                right = mid ; // Tìm kiếm bên trái
             } else {
-                left = mid + 1; // Tìm kiếm bên phải
+                left = mid ; // Tìm kiếm bên phải
             }
         }
-        return -1; // Không tìm thấy từ khóa
+        return mid; // Không tìm thấy từ khóa
     }
 
 

@@ -1,6 +1,6 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Cli.Dictionary;
+import  com.example.demo.Cli.Dictionary;
 import com.example.demo.Cli.DictionaryManagement;
 import com.example.demo.Cli.Word;
 import javafx.collections.FXCollections;
@@ -17,6 +17,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import java.io.File;
 import java.io.IOException;
@@ -112,8 +114,8 @@ public class MainController implements Initializable {
      *
      */
 //    public abstract void searchTextFieldAction(KeyEvent keyEvent);
-    public void setSearchTextFieldAction(KeyEvent keyEvent, Dictionary dictionary) {
-        String searchWord =searchTextField.getText().trim().toLowerCase();
+    public void  setSearchTextFieldAction(KeyEvent keyEvent, Dictionary dictionary) {
+            String searchWord = searchTextField.getText().trim().toLowerCase();
         if (!searchWord.isEmpty()) {
             if (dictionaryManagement.searcher(dictionary, searchWord).isEmpty()) {
                 notFoundWordAlert();
