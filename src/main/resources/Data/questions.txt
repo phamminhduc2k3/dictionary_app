@@ -7,39 +7,39 @@ D) Rome
 C
 MC
 What is the chemical symbol for potassium?
-A) K
-B) Pt
+A) Pt
+B) K
 C) Pb
 D) Pu
-A
+B
 MC
 Who wrote the play "Hamlet"?
-A) William Shakespeare
-B) Charles Dickens
-C) Jane Austen
+A) Charles Dickens
+B) Jane Austen
+C) William Shakespeare
 D) Mark Twain
-A
+C
 MC
 What is the largest desert in the world?
-A) Sahara Desert
-B) Gobi Desert
-C) Antarctic Desert
-D) Arabian Desert
-A
+A) Gobi Desert
+B) Antarctic Desert
+C) Arabian Desert
+D) Sahara Desert
+D
 MC
 Who composed the famous symphony "Symphony No. 9"?
-A) Ludwig van Beethoven
-B) Wolfgang Amadeus Mozart
+A) Wolfgang Amadeus Mozart
+B) Ludwig van Beethoven
 C) Johann Sebastian Bach
 D) Franz Schubert
-A
+B
 MC
 Who is credited with discovering America?
-A) Christopher Columbus
-B) Marco Polo
-C) Vasco da Gama
+A) Marco Polo
+B) Vasco da Gama
+C) Christopher Columbus
 D) Ferdinand Magellan
-A
+C
 MC
 Who painted the famous artwork "The Starry Night"?
 A) Vincent van Gogh
@@ -49,11 +49,11 @@ D) Michelangelo
 A
 MC
 What is the chemical symbol for calcium?
-A) Ca
-B) Cu
-C) Co
-D) Cl
-A
+A) Cu
+B) Co
+C) Cl
+D) Ca
+D
 MC
 Which of the following is a greenhouse gas?
 A) Oxygen
@@ -63,11 +63,11 @@ D) Argon
 C
 MC
 Who is the author of "The Catcher in the Rye"?
-A) J.D. Salinger
-B) F. Scott Fitzgerald
+A) F. Scott Fitzgerald
+B) J.D. Salinger
 C) Ernest Hemingway
 D) Mark Twain
-A
+B
 MC
 Who discovered the theory of relativity?
 A) Albert Einstein
@@ -84,39 +84,39 @@ D) Endoplasmic reticulum
 A
 MC
 Who directed the movie "Schindler's List"?
-A) Steven Spielberg
-B) Martin Scorsese
-C) Quentin Tarantino
+A) Martin Scorsese
+B) Quentin Tarantino
+C) Steven Spielberg
 D) Alfred Hitchcock
-A
+C
 MC
 Which sport does Serena Williams play professionally?
-A) Tennis
-B) Golf
-C) Basketball
+A) Golf
+B) Basketball
+C) Tennis
 D) Soccer
-A
+C
 MC
 Who is the founder of Microsoft?
-A) Bill Gates
-B) Steve Jobs
-C) Jeff Bezos
-D) Larry Page
-A
+A) Steve Jobs
+B) Jeff Bezos
+C) Larry Page
+D) Bill Gates
+D
 MC
 What is the currency of Japan?
-A) Yen
-B) Dollar
+A) Dollar
+B) Yen
 C) Euro
 D) Pound
-A
+B
 MC
 Who is the current President of the United States (as of 2022)?
-A) Joe Biden
-B) Donald Trump
-C) Barack Obama
+A) Donald Trump
+B) Barack Obama
+C) Joe Biden
 D) George W. Bush
-A
+C
 MC
 What is the most widely spoken language in the world?
 A) Mandarin Chinese
@@ -126,11 +126,11 @@ D) Hindi
 A
 MC
 Who is known as the father of psychoanalysis?
-A) Sigmund Freud
-B) Carl Jung
-C) B.F. Skinner
-D) Ivan Pavlov
-A
+A) Carl Jung
+B) B.F. Skinner
+C) Ivan Pavlov
+D) Sigmund Freud
+D
 MC
 Which planet is known as the "Red Planet"?
 A) Mars
@@ -140,18 +140,18 @@ D) Saturn
 A
 MC
 Which country is famous for pizza?
-A) Italy
-B) France
-C) United States
+A) France
+B) United States
+C) Italy
 D) Spain
-A
+C
 MC
 Who is the founder of the fashion brand "Chanel"?
-A) Coco Chanel
-B) Giorgio Armani
+A) Giorgio Armani
+B) Coco Chanel
 C) Ralph Lauren
 D) Calvin Klein
-A
+B
 MC
 What is the chemical name for aspirin?
 A) Acetylsalicylic acid
@@ -161,11 +161,11 @@ D) Acetaminophen
 A
 MC
 Who designed the Eiffel Tower?
-A) Gustave Eiffel
-B) Antoni Gaudí
-C) Frank Lloyd Wright
-D) Le Corbusier
-A
+A) Antoni Gaudí
+B) Frank Lloyd Wright
+C) Le Corbusier
+D) Gustave Eiffel
+D
 MC
 Who is the king of the Greek gods?
 A) Zeus
@@ -175,11 +175,11 @@ D) Apollo
 A
 MC
 Who played the character Harry Potter in the Harry Potter film series?
-A) Daniel Radcliffe
-B) Rupert Grint
-C) Emma Watson
+A) Rupert Grint
+B) Emma Watson
+C) Daniel Radcliffe
 D) Tom Felton
-A
+C
 MC
 Which company is known for its search engine?
 A) Google
@@ -189,18 +189,18 @@ D) Amazon
 A
 MC
 Who founded the first university in the world?
-A) Fatima al-Fihri
-B) Aristotle
-C) Plato
-D) Socrates
-A
+A) Aristotle
+B) Plato
+C) Socrates
+D) Fatima al-Fihri
+D
 MC
 What is the main function of red blood cells?
-A) Carrying oxygen
-B) Fighting infection
-C) Producing hormones
+A) Fighting infection
+B) Producing hormones
+C) Carrying oxygen
 D) Clotting blood
-A
+C
 MC
 What is the hardest natural substance on Earth?
 A) Diamond
@@ -217,18 +217,18 @@ D) Korea
 A
 MC
 Who is considered the father of modern anthropology?
-A) Franz Boas
-B) Bronisław Malinowski
+A) Bronisław Malinowski
+B) Franz Boas
 C) Margaret Mead
 D) Claude Lévi-Strauss
-A
+B
 MC
 What instrument is used to measure wind speed?
-A) Anemometer
-B) Barometer
-C) Hygrometer
+A) Barometer
+B) Hygrometer
+C) Anemometer
 D) Thermometer
-A
+C
 MC
 Who coined the term "survival of the fittest"?
 A) Herbert Spencer
@@ -252,18 +252,18 @@ D) Hydrogen
 A
 MC
 What is the largest species of big cats?
-A) Tiger
-B) Lion
-C) Leopard
-D) Jaguar
-A
+A) Lion
+B) Leopard
+C) Jaguar
+D) Tiger
+D
 MC
 Who is the co-founder of Apple Inc.?
-A) Steve Wozniak
-B) Steve Jobs
-C) Tim Cook
+A) Steve Jobs
+B) Tim Cook
+C) Steve Wozniak
 D) Jony Ive
-A
+C
 MC
 Who formulated the laws of motion?
 A) Isaac Newton
@@ -273,11 +273,11 @@ D) Galileo Galilei
 A
 MC
 Who wrote "The Picture of Dorian Gray"?
-A) Oscar Wilde
-B) F. Scott Fitzgerald
+A) F. Scott Fitzgerald
+B) Oscar Wilde
 C) Virginia Woolf
 D) James Joyce
-A
+B
 MC
 What is the smallest prime number?
 A) 2
