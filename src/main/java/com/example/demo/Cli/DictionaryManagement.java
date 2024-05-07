@@ -153,17 +153,69 @@ public static void insertFromFile( Dictionary dictionary,String fileName) {
     }
 
 
-    public ObservableList<String> searcher(Dictionary dictionary, String searchWord) {
-        searchWord = searchWord.trim().toLowerCase();
-        ObservableList<String> list = FXCollections.observableArrayList();
-        Set<String> entries = dictionary.getWords().keySet();
-        for (String entry : entries) {
-            if (entry.startsWith(searchWord)) {
-                list.add(entry);
+//    public ObservableList<String> searcher(Dictionary dictionary, String searchWord) {
+//        searchWord = searchWord.trim().toLowerCase();
+//        ObservableList<String> list = FXCollections.observableArrayList();
+//        Set<String> entries = dictionary.getWords().keySet();
+//        for (String entry : entries) {
+//            if (entry.startsWith(searchWord)) {
+//                list.add(entry);
+//            }
+//        }
+//        return list;
+//    }
+public ObservableList<String> searcher(Dictionary dictionary, String searchWord) {
+    searchWord = searchWord.trim().toLowerCase();
+    ObservableList<String> list = FXCollections.observableArrayList();
+    List<String> sortedWords = new ArrayList<>(dictionary.getWords().keySet());
+    Collections.sort(sortedWords);
+
+    int startIndex = binarySearchRecursive(sortedWords, searchWord, 0, sortedWords.size());
+    if (startIndex >= 0) {
+        // Tìm thấy chỉ số bắt đầu của các từ có tiền tố tương đồng
+        for (int i = startIndex; i < sortedWords.size(); i++) {
+            int length = searchWord.length();
+            String wordzin = sortedWords.get(i);
+            String word = sortedWords.get(i).substring(0, length);
+            if (word.startsWith(searchWord) || word.startsWith(" " + searchWord)) {
+                list.add(wordzin);
+            } else {
+                break; // Dừng khi không còn từ nào có tiền tố tương đồng
             }
         }
+    } else {
         return list;
     }
+
+    return list;
+}
+
+
+    private int binarySearchRecursive(List<String> words, String searchWord, int left, int right) {
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            String midWord = words.get(mid);
+
+            // Cắt các từ để đảm bảo cùng độ dài
+            int Length = searchWord.length();
+            midWord = midWord.substring(0, Length );
+
+            int res = searchWord.compareTo(midWord);
+            if (res == 0) {
+                return mid; // Tìm thấy từ khóa
+            } else if (res < 0) {
+                right = mid - 1; // Tìm kiếm bên trái
+            } else {
+                left = mid + 1; // Tìm kiếm bên phải
+            }
+        }
+        return -1; // Không tìm thấy từ khóa
+    }
+
+
+
+
+
 
     /**rewrite the dictionary
      *

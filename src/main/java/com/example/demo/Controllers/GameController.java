@@ -36,61 +36,27 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = questions.get(currentQuestionIndex);
-        questionLabel.setText("Question " + (currentQuestionIndex + 1) + ": " + question.getQuestionText());
-        if (question.getType().equals(MULTIPLE_CHOICE)) {
-            answerField.setVisible(false);
-            answerTitle.setVisible(false);
-            submitButton.setVisible(false);
-
-            optionA.setVisible(true);
-            optionB.setVisible(true);
-            optionC.setVisible(true);
-            optionD.setVisible(true);
-
-            optionA.setText(question.getOptions()[0]);
-            optionB.setText(question.getOptions()[1]);
-            optionC.setText(question.getOptions()[2]);
-            optionD.setText(question.getOptions()[3]);
-        }
-//        else if (question.getType().equals(FILL_IN_THE_BLANK) || question.getType().equals(SHORT_ANSWER)) {
-//            optionA.setVisible(false);
-//            optionB.setVisible(false);
-//            optionC.setVisible(false);
-//            optionD.setVisible(false);
-//
-//            answerField.setVisible(true);
-//            answerTitle.setVisible(true);
-//            submitButton.setVisible(true);
-//
-//            answerField.setOnKeyTyped(new EventHandler<KeyEvent>() {
-//                @Override
-//                public void handle(KeyEvent keyEvent) {
-//                    if (answerField.getText().trim().equals(""))
-//                        submitButton.setDisable(true);
-//                    else
-//                        submitButton.setDisable(false);
-//                }
-//            });
-//        }
-
-        questionLabel.setMinHeight(72.0);
-
-        // Thêm một ChangeListener để theo dõi khi chiều cao của label thay đổi
-        questionLabel.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-            if (newHeight.doubleValue() > questionLabel.getMinHeight()) {
-                questionLabel.setMinHeight(newHeight.doubleValue());
-            }
-        });
-
-        scoreLabel.setText("Score: " + score);
-        submitButton.setDisable(true);
-        correctLabel.setVisible(false);
-        incorrectLabel.setVisible(false);
-        correctAnswerTitle.setVisible(false);
-        correctAnswerContent.setVisible(false);
-        answerField.clear();
+        displayNextQuestion();
     }
+    @FXML
+    private void handleReplayAction(ActionEvent event) {
+        try {
+            // Tạo một trò chơi mới
+            Egame = new EnglishQuizGame(gameFilePath);
+            questions = Egame.getQuestions();
+            Collections.shuffle(questions);
+
+            // Đặt lại trạng thái ban đầu của trò chơi
+            currentQuestionIndex = 0;
+            score = 0;
+
+            // Hiển thị câu hỏi đầu tiên
+            displayNextQuestion();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(); // Xử lý lỗi nếu không tìm thấy tệp tin
+        }
+    }
+
 
     @FXML
     private void handleOptionAction(ActionEvent event) {
@@ -124,7 +90,7 @@ public class GameController implements Initializable {
                 selectedButton.setStyle("-fx-background-color: #ff4747 ;"); // Hiển thị đáp án sai
                 new Thread(() -> {
                     try {
-                        Thread.sleep(2000); // Đợi 2 giây
+                        Thread.sleep(2); // Đợi 2 giây
                         Platform.runLater(this::endGame);
                     } catch (InterruptedException ex) {
                         Thread.currentThread().interrupt();
@@ -133,49 +99,24 @@ public class GameController implements Initializable {
                 return;
             }
         }
-//        else if (currentQuestion.getType().equals(FILL_IN_THE_BLANK)
-//                || currentQuestion.getType().equals(SHORT_ANSWER)) {
-//            String fillAnswer = answerField.getText();
-//            if (fillAnswer.equals("")) {
-//                submitButton.setVisible(false);
-//            }
-//            if (currentQuestion.getCorrectAnswer().equalsIgnoreCase(fillAnswer)) {
-//                correctLabel.setVisible(true);
-//                currentQuestionIndex ++;
-//                score++;
-//                scoreLabel.setText("Score: " + score);
-//            } else {
-//                incorrectLabel.setVisible(true);
-//                correctAnswerTitle.setVisible(true);
-//                correctAnswerContent.setText(currentQuestion.getCorrectAnswer());
-//                correctAnswerContent.setVisible(true);
-//                answerField.setVisible(false);
-//                answerTitle.setVisible(false);
-//                new Thread(() -> {
-//                    try {
-//                        Thread.sleep(3000); // Đợi 2 giây
-//                        Platform.runLater(this::endGame);
-//                    } catch (InterruptedException ex) {
-//                        Thread.currentThread().interrupt();
-//                    }
-//                }).start();
-//                return;
-//            }
-//        }
-
         prepareNextQuestion();
     }
 
     private void prepareNextQuestion() {
-        // Chờ vài giây để người chơi xem kết quả, sau đó hiển thị câu hỏi tiếp theo
-        new Thread(() -> {
-            try {
-                Thread.sleep(2000); // Đợi 2 giây
-                Platform.runLater(this::displayNextQuestion);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
+        NextButton.setVisible(true);
+        NextButton.setDisable(false);
+        optionA.setDisable(true);
+        optionB.setDisable(true);
+        optionC.setDisable(true);
+        optionD.setDisable(true);
+        NextButton.setOnAction(event -> {
+            if (currentQuestionIndex < questions.size() - 1) { // Kiểm tra xem còn câu hỏi tiếp theo không
+                displayNextQuestion(); // Hiển thị câu hỏi mới
+            } else {
+                endGame(); // Nếu không còn câu hỏi, kết thúc trò chơi
             }
-        }).start();
+        });
+
     }
 
     private void resetButtonColors() {
@@ -183,12 +124,11 @@ public class GameController implements Initializable {
         optionB.setStyle("-fx-background-color: #1dfee8;");
         optionC.setStyle("-fx-background-color: #1dfee8;");
         optionD.setStyle("-fx-background-color: #1dfee8;");
-
-        correctLabel.setVisible(false);
-        answerField.clear();
     }
 
     private void displayNextQuestion() {
+        Replay.setVisible(false);
+        Replay.setDisable(true);
         if (currentQuestionIndex < questions.size()) {
             resetButtonColors();
             Question question = questions.get(currentQuestionIndex);
@@ -196,65 +136,50 @@ public class GameController implements Initializable {
             // Cập nhật giao diện dựa trên loại câu hỏi
             if (question.getType().equals(MULTIPLE_CHOICE)) {
                 // Tương tự như đã thiết lập trong `initialize()`
-                answerField.setVisible(false);
-                answerTitle.setVisible(false);
-                submitButton.setVisible(false);
+                NextButton.setVisible(false);
 
                 optionA.setVisible(true);
                 optionB.setVisible(true);
                 optionC.setVisible(true);
                 optionD.setVisible(true);
+                optionA.setDisable(false);
+                optionB.setDisable(false);
+                optionC.setDisable(false);
+                optionD.setDisable(false);
 
                 optionA.setText(question.getOptions()[0]);
                 optionB.setText(question.getOptions()[1]);
                 optionC.setText(question.getOptions()[2]);
                 optionD.setText(question.getOptions()[3]);
             }
-//            else if (question.getType().equals(FILL_IN_THE_BLANK) || question.getType().equals(SHORT_ANSWER)){
-//                // Tương tự như đã thiết lập cho FIB và SA
-//                optionA.setVisible(false);
-//                optionB.setVisible(false);
-//                optionC.setVisible(false);
-//                optionD.setVisible(false);
-//
-//                answerField.setVisible(true);
-//                answerTitle.setVisible(true);
-//                submitButton.setVisible(true);
-//
-//                answerField.setOnKeyTyped(new EventHandler<KeyEvent>() {
-//                    @Override
-//                    public void handle(KeyEvent keyEvent) {
-//                        if (answerField.getText().trim().equals(""))
-//                            submitButton.setDisable(true);
-//                        else
-//                            submitButton.setDisable(false);
-//                    }
-//                });
-//            }
+            questionLabel.setMinHeight(72.0);
+
+            // Thêm một ChangeListener để theo dõi khi chiều cao của label thay đổi
+            questionLabel.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+                if (newHeight.doubleValue() > questionLabel.getMinHeight()) {
+                    questionLabel.setMinHeight(newHeight.doubleValue());
+                }
+            });
+
+            scoreLabel.setText("Score: " + score);
+            NextButton.setDisable(true);
         } else {
             endGame();
         }
     }
-
     private void endGame() {
         questionLabel.setText("Trò chơi kết thúc! Điểm của bạn là: " + score);
-        optionA.setVisible(false);
-        optionB.setVisible(false);
-        optionC.setVisible(false);
-        optionD.setVisible(false);
-        answerField.setVisible(false);
-        submitButton.setVisible(false);
-        correctLabel.setVisible(false);
-        incorrectLabel.setVisible(false);
-        correctAnswerTitle.setVisible(false);
-        correctAnswerContent.setVisible(false);
+        Replay.setVisible(true);
+        Replay.setDisable(false);
+        optionA.setDisable(true);
+        optionB.setDisable(true);
+        optionC.setDisable(true);
+        optionD.setDisable(true);
+        NextButton.setVisible(false);
+        NextButton.setDisable(true);
     }
-
     @FXML
-    private TextField answerField;
+    private Label questionLabel, scoreLabel;
     @FXML
-    private Label questionLabel, correctLabel, incorrectLabel, scoreLabel,
-            answerTitle, correctAnswerTitle, correctAnswerContent;
-    @FXML
-    private Button optionA, optionB, optionC, optionD, submitButton;
+    private Button optionA, optionB, optionC, optionD, NextButton, Replay;
 }
