@@ -180,7 +180,9 @@ public ObservableList<String> searcher(Dictionary dictionary, String searchWord)
             int LengthsearchWord = searchWord.length();
             if (word.startsWith(searchWord)) {
                 list.add(word);
-            } else if (LengthWord < LengthsearchWord) {
+            }
+            // neu khong co a a ma chi co a (chi so bat dau) va a a a thi khi tim kiem se khong ra neu khong co else if
+            else if (searchWord.startsWith(word) || word.startsWith(" " + searchWord)) {
                 continue;
             } else {
                 break; // Dừng khi không còn từ nào có tiền tố tương đồng
@@ -211,21 +213,13 @@ public ObservableList<String> searcher(Dictionary dictionary, String searchWord)
             int LengthmidWord = midWord.length();
             int LengthsearchWord = searchWord.length();
             int res = 0;
-            if(LengthmidWord >= LengthsearchWord) {
-                midWord = midWord.substring(0, LengthsearchWord);
                 res = searchWord.compareTo(midWord);
-            }else {
-                searchWord = searchWord.substring(0, LengthmidWord);
-                res = searchWord.compareTo(midWord);
-            }
-//            midWord = midWord.substring(0, LengthsearchWord);
-//            res = searchWord.compareTo(midWord);
             if (res == 0) {
                 return mid; // Tìm thấy từ khóa
             } else if (res < 0) {
-                right = mid ; // Tìm kiếm bên trái
+                right = mid -1 ; // Tìm kiếm bên trái
             } else {
-                left = mid ; // Tìm kiếm bên phải
+                left = mid +1 ; // Tìm kiếm bên phải
             }
         }
         return mid; // Không tìm thấy từ khóa
@@ -254,3 +248,4 @@ public ObservableList<String> searcher(Dictionary dictionary, String searchWord)
     }
 
 }
+
